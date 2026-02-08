@@ -1,7 +1,7 @@
-package de.npe;
+package de.egb;
 
-import de.npe.referee.RefereeReceiver;
-import de.npe.vision.VisionReceiver;
+import de.egb.referee.RefereeReceiver;
+import de.egb.vision.VisionReceiver;
 
 public class Main {
 

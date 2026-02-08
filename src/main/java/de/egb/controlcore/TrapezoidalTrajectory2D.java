@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public final class TrapezoidalTrajectory2D {
 

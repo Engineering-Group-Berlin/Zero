@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record Pose2D(Vec2 p, double theta)
 {

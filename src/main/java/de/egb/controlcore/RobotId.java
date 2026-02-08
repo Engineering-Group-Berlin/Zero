@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record RobotId(int value) {
     public RobotId {

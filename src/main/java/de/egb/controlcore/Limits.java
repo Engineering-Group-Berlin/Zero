@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record Limits(
         double vMax, double aMax, double jerkMax,

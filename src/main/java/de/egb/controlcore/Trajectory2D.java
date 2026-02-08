@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record Trajectory2D(double t0, double tf, boolean valid)
 {

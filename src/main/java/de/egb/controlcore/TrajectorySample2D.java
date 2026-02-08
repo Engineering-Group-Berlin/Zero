@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record TrajectorySample2D(Pose2D pose, Twist2D twist, double t)
 {

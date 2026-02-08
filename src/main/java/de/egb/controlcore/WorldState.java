@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 import java.util.Arrays;
 

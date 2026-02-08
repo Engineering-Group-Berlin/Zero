@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record Twist2D(Vec2 v, double omega)
 {

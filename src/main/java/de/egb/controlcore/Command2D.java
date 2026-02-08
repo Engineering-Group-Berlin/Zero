@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record Command2D(
         Vec2 v,

@@ -4,7 +4,7 @@ plugins {
     id 'com.google.protobuf' version '0.9.4'
 }
 
-group = 'de.npe'
+group = 'de.egb'
 version = '0.1.0-SNAPSHOT'
 
 java {
@@ -53,5 +53,5 @@ tasks.named('test') {
 }
 
 application {
-    mainClass = 'de.npe.Main'
+    mainClass = 'de.egb.Main'
 }

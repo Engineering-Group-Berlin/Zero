@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public final class Math2D {
     private Math2D() {}

@@ -1,4 +1,4 @@
-package controlcore;
+package de.egb.controlcore;
 
 public record State2D(
         Pose2D pose,
