@@ -8,6 +8,15 @@ public class Main {
     public static void main(String[] args) throws Exception{
         System.out.println("Starting SSL Zero AI");
 
+        boolean bTestTraj = false;
+        for(String s : args)
+        {
+            if("--traj-test".equals(s))
+            {
+                controlcore.tests.TrajectoryAndPControllerTest.run();
+            }
+        }
+
         VisionReceiver visionReceiver = new VisionReceiver();
         Thread visionThread = new Thread(visionReceiver);
         visionThread.start();
