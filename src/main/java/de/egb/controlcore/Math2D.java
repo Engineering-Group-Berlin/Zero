@@ -1,6 +1,7 @@
 package de.egb.controlcore;
 
-public final class Math2D {
+public final class Math2D
+{
     private Math2D() {}
 
     public static double dot(Vec2 a, Vec2 b)

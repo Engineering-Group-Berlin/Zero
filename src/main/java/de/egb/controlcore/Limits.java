@@ -6,8 +6,7 @@ public record Limits(
         double vDeadband, double omegaDeadband
 )
 {
-    public static Limits defaults()
-    {
+    public static Limits defaults() {
         return new Limits(
                 4.0, 3.0, 0.0,
             8.0, 20.0, 0.0,

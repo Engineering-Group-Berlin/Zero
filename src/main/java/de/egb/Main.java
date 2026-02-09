@@ -1,7 +1,10 @@
 package de.egb;
 
+import de.egb.controlcore.tests.TrajectoryAndPControllerTest;
 import de.egb.referee.RefereeReceiver;
 import de.egb.vision.VisionReceiver;
+
+import javax.xml.transform.Transformer;
 
 public class Main {
 
@@ -13,7 +16,7 @@ public class Main {
         {
             if("--traj-test".equals(s))
             {
-                controlcore.tests.TrajectoryAndPControllerTest.run();
+                TrajectoryAndPControllerTest.run();
             }
         }
 

@@ -1,6 +1,7 @@
-package controlcore.control;
+package de.egb.controlcore.control;
 
-import controlcore.Math2D;
+
+import de.egb.controlcore.Math2D;
 
 public final class PController
 {
