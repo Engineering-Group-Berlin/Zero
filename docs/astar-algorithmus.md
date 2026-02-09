@@ -204,7 +204,24 @@ Entweder A* einmal pro Ziel laufen lassen, oder ein „Ziel-Set“ verwenden: So
 
 ---
 
-## 11. Literatur
+## 11. Projekt-Implementierung
+
+**Klasse:** `de.egb.controlcore.planning.AStarPathfinder`
+
+**Verwendung:**
+```java
+Grid2D grid = new Grid2D(20, 15);
+grid.setWalkable(5, 5, false);  // Hindernis
+
+AStarPathfinder pathfinder = new AStarPathfinder(grid, Grid2D.Connectivity.EIGHT);
+List<Grid2D.Cell> path = pathfinder.findPath(grid.cell(0, 0), grid.cell(19, 14));
+```
+
+Siehe auch [code-dokumentation.md](code-dokumentation.md) Abschnitt 4.9.
+
+---
+
+## 12. Literatur
 
 - Hart, P. E.; Nilsson, N. J.; Raphael, B.: *A Formal Basis for the Heuristic Determination of Minimum Cost Paths*. IEEE Transactions on Systems Science and Cybernetics, 1968.
 - Russell, S.; Norvig, P.: *Artificial Intelligence: A Modern Approach* – Kapitel zu Suchalgorithmen.

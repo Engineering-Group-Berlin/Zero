@@ -36,8 +36,9 @@ de.egb
 ├── Main.java                 # Einstiegspunkt
 ├── core/
 │   └── App.java             # Zentrale Anwendung (Init, Loop, Shutdown)
-├── controlcore/             # Geometrie, Weltzustand, Regler, Trajektorien
+├── controlcore/             # Geometrie, Weltzustand, Regler, Trajektorien, Path Planning
 │   ├── control/             # PController, Se2PController
+│   ├── planning/            # Grid2D, AStarPathfinder
 │   └── tests/               # TrajectoryAndPControllerTest, TrajectoryDebugMain
 ├── vision/
 │   └── VisionReceiver.java  # Multicast-Empfang SSL Vision
@@ -67,6 +68,7 @@ Einstiegspunkt. Startet entweder:
 | Argument       | Beschreibung                                           |
 |----------------|--------------------------------------------------------|
 | `--traj-test`  | Nur Trajektorien- und P-Controller-Test, dann Exit     |
+| `--path-planning-test` | Path Planning + Trajektorien + Controller Integrationstest |
 | `--debug-export` | Aktiviert Debug-Export nach `build/debug/recording.jsonl` |
 
 ### 3.2 App.java
@@ -172,6 +174,19 @@ SE(2)-P-Regler (Position + Orientierung):
 - vMax: 4.0 m/s, aMax: 3.0, omegaMax: 8.0 rad/s, alphaMax: 20.0
 - Deadbands: 0
 
+### 4.9 Path Planning (Grid2D, AStarPathfinder)
+
+**Paket:** `de.egb.controlcore.planning`
+
+**Grid2D:** 2D-Raster mit Begehbarkeit (`walkable`) und Kosten pro Zelle (`cost`). Ermöglicht 4- oder 8-Nachbarschaft mit optionaler Corner-Cutting-Verhinderung. Siehe [grid2d-dokumentation.md](grid2d-dokumentation.md).
+
+**AStarPathfinder:** A*-Implementierung für Grid2D.
+- `findPath(start, goal)` → `List<Cell>` (Pfad inkl. Start und Ziel, oder leer wenn kein Pfad)
+- Heuristik: `MANHATTAN` oder `EUCLIDEAN`
+- Connectivity: `FOUR` oder `EIGHT`
+- `preventCornerCutting` bei 8-Nachbarn (Standard: true)
+- Bewegungs kosten: Kardinal = Zellkosten, Diagonal = Zellkosten × √2
+
 ---
 
 ## 5. Vision
@@ -228,7 +243,19 @@ Detaillierte Beschreibung siehe: [docs/debug-export-format.md](debug-export-form
 
 ## 7. Tests
 
-### 7.1 TrajectoryAndPControllerTest
+### 7.1 PathPlanningIntegrationTest
+
+**Pfad:** `de.egb.controlcore.tests.PathPlanningIntegrationTest`  
+**Aufruf:** `./gradlew run --args="--path-planning-test"`
+
+Integrations-Test für Path Planning, Trajektorien und Controller:
+1. Erstellt Grid2D mit Hindernissen, A* findet Pfad
+2. Konvertiert Zellen zu Weltkoordinaten (Vec2)
+3. Baut Trajektorien-Kette (TrapezoidalTrajectory2D pro Segment)
+4. Simuliert Roboter mit Se2PController (50 Hz, Euler-Integration)
+5. Gibt Raster-Visualisierung, Positionsverlauf und Ergebnis aus
+
+### 7.2 TrajectoryAndPControllerTest
 
 **Pfad:** `de.egb.controlcore.tests.TrajectoryAndPControllerTest`
 
@@ -238,7 +265,7 @@ Integrationstest:
 - Prüft: Befehle innerhalb Limits, Endfehler unter Toleranz
 - Aufruf: `./gradlew run --args="--traj-test"`
 
-### 7.2 TrajectoryDebugMain
+### 7.3 TrajectoryDebugMain
 
 **Pfad:** `de.egb.controlcore.tests.TrajectoryDebugMain`
 

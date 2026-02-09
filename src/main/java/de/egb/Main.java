@@ -1,5 +1,6 @@
 package de.egb;
 
+import de.egb.controlcore.tests.PathPlanningIntegrationTest;
 import de.egb.controlcore.tests.TrajectoryAndPControllerTest;
 import de.egb.core.App;
 
@@ -16,6 +17,10 @@ public class Main {
         for (String s : args) {
             if ("--traj-test".equals(s)) {
                 TrajectoryAndPControllerTest.run();
+                return;
+            }
+            if ("--path-planning-test".equals(s)) {
+                PathPlanningIntegrationTest.run();
                 return;
             }
         }
