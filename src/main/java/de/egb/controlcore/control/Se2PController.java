@@ -1,6 +1,7 @@
-package controlcore.control;
+package de.egb.controlcore.control;
 
-import controlcore.*;
+import de.egb.controlcore.*;
+import de.egb.controlcore.control.*;
 
 public final class Se2PController {
 

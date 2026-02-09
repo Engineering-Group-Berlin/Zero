@@ -1,7 +1,7 @@
-package controlcore.tests;
+package de.egb.controlcore.tests;
 
-import controlcore.*;
-import controlcore.control.Se2PController;
+import de.egb.controlcore.*;
+import de.egb.controlcore.control.Se2PController;
 
 import java.util.Locale;
 
