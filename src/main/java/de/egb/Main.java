@@ -1,12 +1,24 @@
-package de.npe;
+package de.egb;
 
-import de.npe.referee.RefereeReceiver;
-import de.npe.vision.VisionReceiver;
+import de.egb.controlcore.tests.TrajectoryAndPControllerTest;
+import de.egb.referee.RefereeReceiver;
+import de.egb.vision.VisionReceiver;
+
+import javax.xml.transform.Transformer;
 
 public class Main {
 
     public static void main(String[] args) throws Exception{
         System.out.println("Starting SSL Zero AI");
+
+        boolean bTestTraj = false;
+        for(String s : args)
+        {
+            if("--traj-test".equals(s))
+            {
+                TrajectoryAndPControllerTest.run();
+            }
+        }
 
         VisionReceiver visionReceiver = new VisionReceiver();
         Thread visionThread = new Thread(visionReceiver);
